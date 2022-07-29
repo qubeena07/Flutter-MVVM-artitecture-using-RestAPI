@@ -2,9 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mvvm_project/model/user_model.dart';
 import 'package:mvvm_project/respository/auth_repository.dart';
 import 'package:mvvm_project/utils/routes/routes_name.dart';
 import 'package:mvvm_project/utils/utils.dart';
+import 'package:mvvm_project/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 
 class AuthViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();
@@ -47,6 +50,9 @@ class AuthViewModel with ChangeNotifier {
     setLoading(true);
     _myRepo.registerApi(data).then((value) {
       setLoading(false);
+      final userPreference = Provider.of<UserViewModel>(context, listen: false);
+      userPreference.saveUser(value);
+      UserModel(token: value['token'].toString());
       Utils.flushBarErrorMessage("Sign Up Sucessfully", context);
       Navigator.pushNamed(context, RoutesName.login);
       if (kDebugMode) {
