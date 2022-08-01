@@ -84,7 +84,7 @@ class Products {
   int? price;
   int? quantity;
   int? total;
-  double? discountPercentage;
+  dynamic discountPercentage;
   int? discountedPrice;
 
   Products(

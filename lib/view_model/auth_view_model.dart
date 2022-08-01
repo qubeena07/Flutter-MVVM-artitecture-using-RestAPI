@@ -32,6 +32,8 @@ class AuthViewModel with ChangeNotifier {
     log("new Data : ${data.toString()}");
     _myRepo.loginApi(data).then((value) {
       setLoading(false);
+      final userPreference = Provider.of<UserViewModel>(context, listen: false);
+      userPreference.saveUser(UserModel(token: value['token'].toString()));
       Utils.flushBarErrorMessage("Login Successfully", context);
       Navigator.pushNamed(context, RoutesName.home);
       if (kDebugMode) {

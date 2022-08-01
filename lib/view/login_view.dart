@@ -103,9 +103,13 @@ class _LoginViewState extends State<LoginView> {
                         "Password should be greater than 6", context);
                   } else {
                     Map data = {
-                      "email": _emailController.text.toString(),
-                      "password": _passwordController.text.toString(),
+                      "email": "eve.holt@reqres.in",
+                      "password": "cityslicka",
                     };
+                    //  {
+                    //   "email": _emailController.text.toString(),
+                    //   "password": _passwordController.text.toString(),
+                    // };
                     authViewModel.loginApi(data, context);
                     log("Data: ${data.toString()}");
                     // print("Api hit");
