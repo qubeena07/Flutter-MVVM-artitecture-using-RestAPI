@@ -60,13 +60,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       return Card(
                         child: ListTile(
-                          title: Text(value.cartsList.data!.carts![index].id
-                              // .products![index].title
+                          title: Text(value
+                              .cartsList
+                              .data!
+                              .carts![index]
+                              //.id
+                              .products![index]
+                              .title
                               .toString()),
-                          leading: Text(
-                              "UserID-${value.cartsList.data!.carts![index].userId}"),
-                          subtitle: Text(
-                              "TotalProducts-${value.cartsList.data!.carts![index].totalProducts}"),
+                          // leading: Text(
+                          //     "UserID-${value.cartsList.data!.carts![index].userId}"),
+                          // subtitle: Text(
+                          //     "TotalProducts-${value.cartsList.data!.carts![index].totalProducts}"),
                         ),
                       );
                     });
