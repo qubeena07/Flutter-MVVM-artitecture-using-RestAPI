@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:mvvm_project/data/network/BaseApiServices.dart';
 import 'package:mvvm_project/data/network/NetworkApiService.dart';
 import 'package:mvvm_project/model/cart_model.dart';
@@ -11,7 +9,8 @@ class HomeRespository {
     try {
       dynamic response =
           await _apiServices.getGetApiResponse(AppUrl.cartEndPoint);
-      log(response.toString());
+      // await _apiServices.getGetApiResponse(AppUrl.cartBaseUrl);
+      //log(response.toString());
       return response = CartListModel.fromJson(response);
     } catch (e) {
       rethrow;
