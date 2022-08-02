@@ -9,9 +9,8 @@ class HomeRespository {
     try {
       dynamic response =
           await _apiServices.getGetApiResponse(AppUrl.cartEndPoint);
-      // await _apiServices.getGetApiResponse(AppUrl.cartBaseUrl);
-      //log(response.toString());
-      return response = CartListModel.fromJson(response);
+
+      return CartListModel.fromJson(response);
     } catch (e) {
       rethrow;
     }

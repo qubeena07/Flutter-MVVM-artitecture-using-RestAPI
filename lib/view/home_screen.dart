@@ -1,3 +1,5 @@
+//
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -55,24 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
               case Status.ERROR:
                 return Text(value.cartsList.message.toString());
               case Status.COMPLETED:
+                List products = [];
+                for (var i in value.cartsList.data!.carts!) {
+                  for (var j in i.products!) {
+                    products.add(j);
+                  }
+                }
                 return ListView.builder(
-                    itemCount: value.cartsList.data!.carts!.length,
+                    itemCount: products.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        child: ListTile(
-                          title: Text(value
-                              .cartsList
-                              .data!
-                              .carts![index]
-                              //.id
-                              .products![index]
-                              .title
-                              .toString()),
-                          // leading: Text(
-                          //     "UserID-${value.cartsList.data!.carts![index].userId}"),
-                          // subtitle: Text(
-                          //     "TotalProducts-${value.cartsList.data!.carts![index].totalProducts}"),
-                        ),
+                      return ListTile(
+                        title: Text(products[index].title.toString()),
+                        leading: Text("ID-${products[index].id.toString()}"),
                       );
                     });
             }
